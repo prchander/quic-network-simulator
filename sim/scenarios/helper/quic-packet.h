@@ -12,6 +12,8 @@
 using namespace ns3;
 using namespace std;
 
+bool IsUDPPacket(Ptr<Packet> p);
+
 class QuicPacket {
 public:
     QuicPacket(Ptr<Packet> p);
@@ -20,6 +22,7 @@ public:
     // and recalculates IP and UDP checksums.
     void ReassemblePacket();
     Ipv4Header& GetIpv4Header();
+    UdpHeader& GetUdpHeader();
     vector<uint8_t>& GetUdpPayload();
     bool IsVersionNegotiationPacket();
 
